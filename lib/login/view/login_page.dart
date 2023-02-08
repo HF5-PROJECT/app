@@ -54,43 +54,64 @@ class LoginView extends StatelessWidget {
 
   Future<dynamic> loginModal(BuildContext context) {
     return showMaterialModalBottomSheet(
-      expand: false,
       context: context,
-      backgroundColor: Color.fromARGB(255, 255, 0, 0),
-      builder: (context) => Material(
-        child: SafeArea(
-      top: false,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ListTile(
-            title: Text('Edit'),
-            leading: Icon(Icons.edit),
-            onTap: () => Navigator.of(context).pop(),
-          ),
-          ListTile(
-            title: Text('Copy'),
-            leading: Icon(Icons.content_copy),
-            onTap: () => Navigator.of(context).pop(),
-          ),
-          ListTile(
-            title: Text('Cut'),
-            leading: Icon(Icons.content_cut),
-            onTap: () => Navigator.of(context).pop(),
-          ),
-          ListTile(
-            title: Text('Move'),
-            leading: Icon(Icons.folder_open),
-            onTap: () => Navigator.of(context).pop(),
-          ),
-          ListTile(
-            title: Text('Delete'),
-            leading: Icon(Icons.delete),
-            onTap: () => Navigator.of(context).pop(),
-          )
-        ],
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25),
+        ),
       ),
-    )),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      builder: (context) => Material(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(25),
+          ),
+        ),
+        color: Theme.of(context).colorScheme.surface,
+        child: SafeArea(
+          top: false,
+          child: Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(35, 50, 35, 35),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const Text('Login'),
+                  const Text('Udfyld dine login oplysninger'),
+                  Container(
+                    child: TextField(
+                      cursorColor: Theme.of(context).colorScheme.onPrimary,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.onPrimary,
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('Move'),
+                    leading: Icon(Icons.folder_open),
+                    onTap: () => Navigator.of(context).pop(),
+                  ),
+                  ListTile(
+                    title: Text('Delete'),
+                    leading: Icon(Icons.delete),
+                    onTap: () => Navigator.of(context).pop(),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

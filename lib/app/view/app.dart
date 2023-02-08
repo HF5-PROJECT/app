@@ -10,14 +10,13 @@ class App extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         appBarTheme: const AppBarTheme(color: Color(0xFF212121)),
-        colorScheme: const ColorScheme.light(
-          brightness: Brightness.light,
+        colorScheme: const ColorScheme.dark(
           primary: Color(0xFF212121),
           onPrimary: Color(0xFFcfb39d),
-          secondary: Color(0xFF212121),
-          onSecondary: Color(0xFFcfb39d),
+          secondary: Color(0xFF56483E),
+          onSecondary: Color(0xFFa68f7d),
           surface: Color(0xFF313030),
-          onSurface: Color(0xFFa68f7d),
+          onSurface: Color(0xFFcfb39d),
           tertiary: Color(0xFF212121),
           onTertiary: Color(0xFFcfb39d),
           background: Color(0xFF212121),
