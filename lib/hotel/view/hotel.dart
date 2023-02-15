@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:overnites/auth/widgets/login_modal.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HotelPage extends StatefulWidget {
+  const HotelPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HotelPage> createState() => _HotelPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HotelPageState extends State<HotelPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             children: [
               IconButton(
-                iconSize: 48,
+                iconSize: 36,
                 splashRadius: 36,
                 onPressed: () => {},
                 icon: SvgPicture.asset(
@@ -30,9 +31,9 @@ class _HomePageState extends State<HomePage> {
               ),
               const Spacer(),
               IconButton(
-                iconSize: 48,
+                iconSize: 36,
                 splashRadius: 36,
-                onPressed: () => {},
+                onPressed: () => {loginModal(context)},
                 icon: SvgPicture.asset(
                   'assets/user.svg',
                   height: 128,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:overnites/home/view/home.dart';
+import 'package:overnites/hotel/view/hotel.dart';
 import 'package:overnites/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -14,12 +14,12 @@ class App extends StatelessWidget {
         colorScheme: const ColorScheme.dark(
           primary: Color(0xFF212121),
           onPrimary: Color(0xFFcfb39d),
-          secondary: Color(0xFF212121),
-          onSecondary: Color(0xFFcfb39d),
+          secondary: Color(0xFF56483e),
+          onSecondary: Color(0xFFa68f7d),
           secondaryContainer: Color(0xFF212121),
           onSecondaryContainer: Color(0xFFcfb39d),
-          surface: Color(0xFF212121),
-          onSurface: Color(0xFFa68f7d),
+          surface: Color(0xFF313030),
+          onSurface: Color(0xFFcfb39d),
           tertiary: Color(0xFF212121),
           onTertiary: Color(0xFFcfb39d),
           background: Color(0xFF212121),
@@ -28,8 +28,8 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      initialRoute: '/home',
-      routes: {'/home': (context) => const HomePage()},
+      initialRoute: '/hotels',
+      routes: {'/hotels': (context) => const HotelPage()},
     );
   }
 }
