@@ -4,8 +4,11 @@ import 'package:overnites/app/services/auth.dart';
 
 class AuthServiceFactory {
   static Future<AuthService> make() async {
+    final bearerTokenService = await BearerTokenFactory.make();
+
     return AuthService(
-      DioFactory.make((await BearerTokenFactory.make()).getBearerToken()),
+      DioFactory.make(bearerTokenService.getAccessToken()),
+      bearerTokenService,
     );
   }
 }

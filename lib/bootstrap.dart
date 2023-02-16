@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:overnites/app/factories/auth_service_factory.dart';
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
@@ -12,7 +12,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   await Hive.initFlutter();
 
-  //final isAuthenticated = await (await AuthServiceFactory.make()).isAuthenticated();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   await runZonedGuarded(
     () async => runApp(await builder()),

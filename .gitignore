@@ -37,6 +37,8 @@
 /packages/flutter/coverage/
 version
 
+# Cookies
+.cookies
 # packages file containing multi-root paths
 .packages.generated
 

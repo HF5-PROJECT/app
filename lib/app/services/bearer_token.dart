@@ -1,27 +1,27 @@
 import 'package:hive_flutter/adapters.dart';
 
-class BearerTokenService {
-  BearerTokenService(this.box);
+class TokenService {
+  TokenService(this.box);
 
-  final String bearerTokenKey = 'bearer_token';
+  final String accessTokenKey = 'access_token';
 
   final Box<String> box;
 
-  String getBearerToken() {
-    final bearerToken = box.get(bearerTokenKey);
+  String getAccessToken() {
+    final accessToken = box.get(accessTokenKey);
 
-    if (bearerToken == null) {
+    if (accessToken == null) {
       return '';
     }
 
-    return bearerToken;
+    return accessToken;
   }
 
-  Future<void> saveBearerToken(String bearerToken) async {
-    await box.put(bearerTokenKey, bearerToken);
+  Future<void> saveAccessToken(String accessToken) async {
+    await box.put(accessTokenKey, accessToken);
   }
 
-  Future<void> deleteBearerToken() async {
-    await box.delete(bearerTokenKey);
+  Future<void> deleteAccessToken() async {
+    await box.delete(accessTokenKey);
   }
 }

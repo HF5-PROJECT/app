@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:overnites/hotel/view/hotel.dart';
 import 'package:overnites/l10n/l10n.dart';
+import 'package:overnites/user/view/user.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -29,7 +30,10 @@ class App extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       initialRoute: '/hotels',
-      routes: {'/hotels': (context) => const HotelPage()},
+      routes: {
+        '/hotels': (context) => const HotelPage(),
+        '/user': (context) => const UserPage(),
+      },
     );
   }
 }
