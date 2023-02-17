@@ -30,16 +30,22 @@ class _UserPageState extends State<UserPage> {
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () async {
-                  // ignore: use_build_context_synchronously
-                  showSnackBar(
-                    context,
-                    const Text('Logged Out'),
-                  );
+                  final navigator = Navigator.of(context);
+                  final scaffoldMessengerState = ScaffoldMessenger.of(context);
 
-                  await (await AuthServiceFactory.make()).logOut();
+                  if (await (await AuthServiceFactory.make()).logout()) {
+                    showSnackBar(
+                      scaffoldMessengerState,
+                      const Text('Logged Out'),
+                    );
 
-                  // ignore: use_build_context_synchronously
-                  Navigator.pop(context);
+                    navigator.pop();
+                  } else {
+                    showSnackBar(
+                      scaffoldMessengerState,
+                      const Text('Error logging out'),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(40),

@@ -113,6 +113,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                   children: [
                     ElevatedButton(
                       onPressed: () async {
+                        final navigator = Navigator.of(context);
+                        final scaffoldMessengerState =
+                            ScaffoldMessenger.of(context);
+
                         setState(() {
                           errorMessage = '';
                         });
@@ -129,14 +133,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                             return;
                           }
 
-                          // ignore: use_build_context_synchronously
                           showSnackBar(
-                            context,
+                            scaffoldMessengerState,
                             const Text('Logged In'),
                           );
 
-                          // ignore: use_build_context_synchronously
-                          Navigator.of(context).pop();
+                          navigator.pop();
                         }
                       },
                       style: ElevatedButton.styleFrom(

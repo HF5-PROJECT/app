@@ -48,13 +48,12 @@ class AuthService {
     try {
       final accessToken = _bearerTokenService.getAccessToken();
 
-      if (accessToken == '') {
-        return false;
-      }
-
       if (!(await verifyToken(accessToken))) {
         await _bearerTokenService.deleteAccessToken();
-        await refresh();
+
+        if (!(await refresh())) {
+          return false;
+        }
 
         return isAuthenticated();
       }
@@ -95,7 +94,15 @@ class AuthService {
     }
   }
 
-  Future<void> logOut() async {
-    await _bearerTokenService.deleteAccessToken();
+  Future<bool> logout() async {
+    try {
+      await _dio.post<Map<String, dynamic>>('/auth/logout', data: {});
+
+      await _bearerTokenService.deleteAccessToken();
+
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }

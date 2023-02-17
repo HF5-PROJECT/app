@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 void showSnackBar(
-  BuildContext context,
+  ScaffoldMessengerState scaffoldMessengerState,
   Widget content,
 ) {
-  ScaffoldMessenger.of(context).showSnackBar(
+  scaffoldMessengerState.showSnackBar(
     SnackBar(
       content: content,
       shape: const RoundedRectangleBorder(
