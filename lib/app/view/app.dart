@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:overnites/counter/counter.dart';
+import 'package:overnites/hotel/view/hotel.dart';
 import 'package:overnites/l10n/l10n.dart';
+import 'package:overnites/user/view/user.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -8,15 +9,18 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Overnites',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(color: Color(0xFF212121)),
         colorScheme: const ColorScheme.dark(
           primary: Color(0xFF212121),
           onPrimary: Color(0xFFcfb39d),
-          secondary: Color(0xFF212121),
-          onSecondary: Color(0xFFcfb39d),
-          surface: Color(0xFF212121),
-          onSurface: Color(0xFFa68f7d),
+          secondary: Color(0xFF56483e),
+          onSecondary: Color(0xFFa68f7d),
+          secondaryContainer: Color(0xFF212121),
+          onSecondaryContainer: Color(0xFFcfb39d),
+          surface: Color(0xFF313030),
+          onSurface: Color(0xFFcfb39d),
           tertiary: Color(0xFF212121),
           onTertiary: Color(0xFFcfb39d),
           background: Color(0xFF212121),
@@ -25,7 +29,11 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      initialRoute: '/hotels',
+      routes: {
+        '/hotels': (context) => const HotelPage(),
+        '/user': (context) => const UserPage(),
+      },
     );
   }
 }
