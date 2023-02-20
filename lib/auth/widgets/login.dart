@@ -67,7 +67,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                 child: TextInputWidget(
                   hintText: 'Email',
                   initialValue: _loginState.email,
-                  autoFocus: true,
                   onChanged: (value) {
                     setState(() {
                       _loginState.email = value;

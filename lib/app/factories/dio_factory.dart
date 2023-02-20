@@ -1,6 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:overnites/app/factories/box_factory.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
@@ -18,9 +22,55 @@ class DioFactory {
       ),
     );
 
-    dio.interceptors.add(CookieManager(PersistCookieJar()));
+    dio.interceptors.add(
+      CookieManager(
+        PersistCookieJar(
+          storage: HiveCookieStorage(),
+        ),
+      ),
+    );
     dio.interceptors.add(PrettyDioLogger());
 
     return dio;
+  }
+}
+
+class HiveCookieStorage implements FileStorage {
+  late final Box<String> box;
+
+  @override
+  String get dir => 'CookieJarBOX';
+
+  @override
+  String? Function(Uint8List list)? readPreHandler;
+
+  @override
+  List<int> Function(String value)? writePreHandler;
+
+  @override
+  Future<void> init(bool persistSession, bool ignoreExpires) {
+    return Future(() async {
+      box = await BoxFactory.make(dir);
+    });
+  }
+
+  @override
+  Future<void> delete(String key) {
+    return Future(() => box.delete(key));
+  }
+
+  @override
+  Future<void> deleteAll(List<String> keys) {
+    return box.deleteAll(keys);
+  }
+
+  @override
+  Future<String?> read(String key) {
+    return Future(() => box.get(key));
+  }
+
+  @override
+  Future<void> write(String key, String value) {
+    return Future(() => box.put(key, value));
   }
 }
