@@ -60,7 +60,7 @@ class _HotelCardState extends State<HotelCard> {
                 SizedBox.fromSize(
                   size: const Size.fromHeight(2),
                 ),
-                TextWidget(text: hotel.address),
+                TextWidget(text: hotel.description),
                 SizedBox.fromSize(
                   size: const Size.fromHeight(2),
                 ),

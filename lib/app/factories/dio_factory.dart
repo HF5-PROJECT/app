@@ -11,8 +11,7 @@ class DioFactory {
   static Dio make(String bearerToken) {
     final dio = Dio(
       BaseOptions(
-//      baseUrl: 'http://localhost/api',
-        baseUrl: 'https://4b0a-185-19-133-2.eu.ngrok.io/api',
+        baseUrl: 'http://localhost/api',
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 5),
         headers: {

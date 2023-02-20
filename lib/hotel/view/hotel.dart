@@ -45,6 +45,26 @@ class _HotelPageState extends State<HotelPage> {
           );
         }
 
+        if (snapshot.data!.isNotEmpty) {
+          return Scaffold(
+            body: SafeArea(
+              child: Column(
+                children: [
+                  const HeaderWidget(),
+                  Expanded(
+                    child: RefreshIndicator(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      onRefresh: () async => setState(() {}),
+                      child: const Text(
+                          'Der er ingen hoteller, prøv at refresh...'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+
         for (final hotel in snapshot.data!) {
           widgets.add(HotelCard(hotel: hotel));
         }
