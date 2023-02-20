@@ -24,15 +24,18 @@ class _HeaderWidgetState extends State<HeaderWidget> {
             iconSize: 36,
             splashRadius: 36,
             onPressed: () => {
-              Navigator.pushReplacement(
-                context,
-                PageRouteBuilder<HotelPage>(
-                  pageBuilder: (context, animation1, animation2) =>
-                      const HotelPage(),
-                  transitionDuration: Duration.zero,
-                  reverseTransitionDuration: Duration.zero,
-                ),
-              )
+              if (ModalRoute.of(context)!.settings.name != "/hotels")
+                {
+                  Navigator.pushReplacement(
+                    context,
+                    PageRouteBuilder<HotelPage>(
+                      pageBuilder: (context, animation1, animation2) =>
+                          const HotelPage(),
+                      transitionDuration: Duration.zero,
+                      reverseTransitionDuration: Duration.zero,
+                    ),
+                  )
+                }
             },
             icon: SvgPicture.asset(
               'assets/small-logo.svg',

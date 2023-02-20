@@ -11,7 +11,9 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Overnites',
       theme: ThemeData(
+        fontFamily: 'Roboto',
         appBarTheme: const AppBarTheme(color: Color(0xFF212121)),
+        scaffoldBackgroundColor: const Color(0xFF1E1E1E),
         colorScheme: const ColorScheme.dark(
           primary: Color(0xFF212121),
           onPrimary: Color(0xFFcfb39d),
