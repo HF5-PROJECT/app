@@ -58,13 +58,19 @@ class _HotelCardState extends State<HotelCard> {
                   ),
                 ),
                 SizedBox.fromSize(
-                  size: const Size.fromHeight(2),
+                  size: const Size.fromHeight(4),
                 ),
-                TextWidget(text: hotel.description),
+                TextWidget(
+                  text: hotel.description,
+                  maxLines: 2,
+                ),
                 SizedBox.fromSize(
-                  size: const Size.fromHeight(2),
+                  size: const Size.fromHeight(4),
                 ),
-                TextWidget(text: hotel.address),
+                TextWidget(
+                  text: hotel.address,
+                  maxLines: 1,
+                ),
                 SizedBox.fromSize(
                   size: const Size.fromHeight(16),
                 ),

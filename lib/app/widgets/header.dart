@@ -24,7 +24,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
             iconSize: 36,
             splashRadius: 36,
             onPressed: () => {
-              if (ModalRoute.of(context)!.settings.name != "/hotels")
+              if (ModalRoute.of(context)!.settings.name != '/hotels')
                 {
                   Navigator.pushReplacement(
                     context,

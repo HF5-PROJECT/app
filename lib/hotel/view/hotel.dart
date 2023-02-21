@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:overnites/app/widgets/header.dart';
 import 'package:overnites/hotel/factory.dart';
@@ -17,6 +19,8 @@ class _HotelPageState extends State<HotelPage> {
 
     return hotelService.getHotels();
   }
+
+  final GlobalKey key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -45,46 +49,55 @@ class _HotelPageState extends State<HotelPage> {
           );
         }
 
-        if (snapshot.data!.isNotEmpty) {
-          return Scaffold(
-            body: SafeArea(
-              child: Column(
-                children: [
-                  const HeaderWidget(),
-                  Expanded(
-                    child: RefreshIndicator(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                      onRefresh: () async => setState(() {}),
-                      child: const Text(
-                          'Der er ingen hoteller, prøv at refresh...'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        }
-
         for (final hotel in snapshot.data!) {
           widgets.add(HotelCard(hotel: hotel));
+        }
+
+        if (widgets.isEmpty) {
+          widgets.add(
+            const Text(
+              'Der er ingen hoteller, prøv at refresh...',
+            ),
+          );
         }
 
         return Scaffold(
           body: SafeArea(
             child: Column(
               children: [
-                const HeaderWidget(),
+                HeaderWidget(
+                  key: key,
+                ),
                 Expanded(
-                  child: RefreshIndicator(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    onRefresh: () async => setState(() {}),
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.all(16),
-                      child: Wrap(
-                        runSpacing: 40,
-                        children: widgets,
-                      ),
-                    ),
+                  child: LayoutBuilder(
+                    builder:
+                        (BuildContext context, BoxConstraints constraints) {
+                      return RefreshIndicator(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        onRefresh: () async => setState(() {}),
+                        child: SingleChildScrollView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          padding: const EdgeInsets.all(16),
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minHeight: max(
+                                0,
+                                constraints.maxHeight -
+                                    (key.currentContext!.findRenderObject()!
+                                            as RenderBox)
+                                        .size
+                                        .height,
+                              ),
+                              minWidth: constraints.maxWidth,
+                            ),
+                            child: Wrap(
+                              runSpacing: 40,
+                              children: widgets,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

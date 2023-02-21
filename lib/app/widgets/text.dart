@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TextWidget extends StatefulWidget {
-  const TextWidget({super.key, required this.text});
+  const TextWidget({super.key, required this.text, this.maxLines});
 
   final String text;
+  final int? maxLines;
 
   @override
   State<TextWidget> createState() => _TextWidgetState();
@@ -11,40 +12,46 @@ class TextWidget extends StatefulWidget {
 
 class _TextWidgetState extends State<TextWidget> {
   late String text;
+  late int? maxLines;
 
   @override
   void initState() {
     text = widget.text;
+    maxLines = widget.maxLines;
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          width: 3,
-          height: 16,
-          child: DecoratedBox(
+    return IntrinsicHeight(
+      child: Row(
+        children: <Widget>[
+          DecoratedBox(
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.onSecondary,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: VerticalDivider(
+              color: Theme.of(context).colorScheme.onSecondary,
+              thickness: 0,
+              width: 3,
             ),
           ),
-        ),
-        const SizedBox(
-          width: 3,
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 14,
-            color: Theme.of(context).colorScheme.onSecondary,
-            fontWeight: FontWeight.bold,
+          SizedBox.fromSize(
+            size: const Size.fromWidth(3),
           ),
-        ),
-      ],
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 14,
+              color: Theme.of(context).colorScheme.onSecondary,
+              fontWeight: FontWeight.bold,
+            ),
+            maxLines: maxLines,
+          ),
+        ],
+      ),
     );
   }
 }
