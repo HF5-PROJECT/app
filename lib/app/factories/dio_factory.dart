@@ -11,7 +11,7 @@ class DioFactory {
   static Dio make(String bearerToken) {
     final dio = Dio(
       BaseOptions(
-        baseUrl: 'https://spicy-steaks-start-185-19-132-68.loca.lt/api',
+        baseUrl: 'http://localhost/api',
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 5),
         headers: {
