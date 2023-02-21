@@ -14,10 +14,21 @@ class HotelPage extends StatefulWidget {
 }
 
 class _HotelPageState extends State<HotelPage> {
-  Future<List<Hotel>> getHotels() async {
+  List<Hotel> hotels = <Hotel>[];
+
+  Future<void> getHotels() async {
     final hotelService = await HotelServiceFactory.make();
 
-    return hotelService.getHotels();
+    hotels = await hotelService.getHotels();
+  }
+
+  Future<void> refreshHotels() async {
+    final hotelService = await HotelServiceFactory.make();
+
+    final hotels = await hotelService.getHotels();
+    setState(() {
+      this.hotels = hotels;
+    });
   }
 
   final GlobalKey key = GlobalKey();
@@ -29,7 +40,7 @@ class _HotelPageState extends State<HotelPage> {
       builder: (context, snapshot) {
         final widgets = <Widget>[];
 
-        if (!snapshot.hasData) {
+        if (hotels.isEmpty) {
           return Scaffold(
             body: SafeArea(
               child: Column(
@@ -49,7 +60,7 @@ class _HotelPageState extends State<HotelPage> {
           );
         }
 
-        for (final hotel in snapshot.data!) {
+        for (final hotel in hotels) {
           widgets.add(HotelCard(hotel: hotel));
         }
 
@@ -74,7 +85,7 @@ class _HotelPageState extends State<HotelPage> {
                         (BuildContext context, BoxConstraints constraints) {
                       return RefreshIndicator(
                         color: Theme.of(context).colorScheme.onPrimary,
-                        onRefresh: () async => setState(() {}),
+                        onRefresh: refreshHotels,
                         child: SingleChildScrollView(
                           physics: const AlwaysScrollableScrollPhysics(),
                           padding: const EdgeInsets.all(16),

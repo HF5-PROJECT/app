@@ -11,17 +11,6 @@ class TextWidget extends StatefulWidget {
 }
 
 class _TextWidgetState extends State<TextWidget> {
-  late String text;
-  late int? maxLines;
-
-  @override
-  void initState() {
-    text = widget.text;
-    maxLines = widget.maxLines;
-
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
@@ -40,14 +29,17 @@ class _TextWidgetState extends State<TextWidget> {
           SizedBox.fromSize(
             size: const Size.fromWidth(3),
           ),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 14,
-              color: Theme.of(context).colorScheme.onSecondary,
-              fontWeight: FontWeight.bold,
+          Flexible(
+            child: Text(
+              widget.text,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 14,
+                color: Theme.of(context).colorScheme.onSecondary,
+                fontWeight: FontWeight.bold,
+              ),
+              maxLines: widget.maxLines,
             ),
-            maxLines: maxLines,
           ),
         ],
       ),

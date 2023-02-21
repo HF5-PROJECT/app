@@ -12,14 +12,6 @@ class HotelCard extends StatefulWidget {
 }
 
 class _HotelCardState extends State<HotelCard> {
-  late final Hotel hotel;
-
-  @override
-  void initState() {
-    hotel = widget.hotel;
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -50,25 +42,26 @@ class _HotelCardState extends State<HotelCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  hotel.name,
+                  widget.hotel.name,
                   style: TextStyle(
                     fontSize: 32,
                     color: Theme.of(context).colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
                   ),
+                  maxLines: 1,
                 ),
                 SizedBox.fromSize(
                   size: const Size.fromHeight(4),
                 ),
                 TextWidget(
-                  text: hotel.description,
+                  text: widget.hotel.description,
                   maxLines: 2,
                 ),
                 SizedBox.fromSize(
                   size: const Size.fromHeight(4),
                 ),
                 TextWidget(
-                  text: hotel.address,
+                  text: widget.hotel.address,
                   maxLines: 1,
                 ),
                 SizedBox.fromSize(
