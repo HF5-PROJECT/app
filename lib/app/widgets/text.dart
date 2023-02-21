@@ -32,8 +32,7 @@ class _TextWidgetState extends State<TextWidget> {
               color: Theme.of(context).colorScheme.onSecondary,
               borderRadius: BorderRadius.circular(16),
             ),
-            child: VerticalDivider(
-              color: Theme.of(context).colorScheme.onSecondary,
+            child: const VerticalDivider(
               thickness: 0,
               width: 3,
             ),
