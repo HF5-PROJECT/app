@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:overnites/app/factories/auth_service_factory.dart';
 import 'package:overnites/app/util/snack_bar.dart';
+import 'package:overnites/l10n/l10n.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -25,32 +26,34 @@ class _UserPageState extends State<UserPage> {
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(40),
                 ),
-                child: const Text('Go back'),
+                child: Text(context.l10n.goBack),
               ),
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () async {
                   final navigator = Navigator.of(context);
                   final scaffoldMessengerState = ScaffoldMessenger.of(context);
+                  final loggedOutText = context.l10n.loggedOut;
+                  final errorLoggingOutText = context.l10n.errorLoggingOutText;
 
                   if (await (await AuthServiceFactory.make()).logout()) {
                     showSnackBar(
                       scaffoldMessengerState,
-                      const Text('Logged Out'),
+                      Text(loggedOutText),
                     );
 
                     navigator.pop();
                   } else {
                     showSnackBar(
                       scaffoldMessengerState,
-                      const Text('Error logging out'),
+                      Text(errorLoggingOutText),
                     );
                   }
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(40),
                 ),
-                child: const Text('Log out'),
+                child: Text(context.l10n.logOut),
               ),
             ],
           ),

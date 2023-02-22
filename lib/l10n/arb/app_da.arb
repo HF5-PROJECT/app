@@ -1,0 +1,16 @@
+{
+  "@@locale": "da",
+  "loggedOut": "Du er nu Logget ud",
+  "loggedIn": "Du er nu logget ind",
+  "errorLoggingOutText": "Fejl under log ud",
+  "logOut": "Log ud",
+  "logIn": "Log ind",
+  "fillOutYourInfo": "Udfyld dine login oplysninger",
+  "dontHaveAnAccountThenClick": "Har du ikke en konto? Så klik ",
+  "here": "her",
+  "goBack": "Gå tilbage",
+  "noResultsTryRefreshing": "Ingen resultater, prøv at opdatere siden",
+  "rooms": "Værelser",
+  "book": "Book",
+  "toGetRedirectedToTheRegisterPage": ", for at blive ført til registeringssiden."
+}

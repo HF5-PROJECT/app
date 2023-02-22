@@ -4,6 +4,7 @@ import 'package:overnites/app/app.dart';
 import 'package:overnites/app/factories/auth_service_factory.dart';
 import 'package:overnites/app/util/snack_bar.dart';
 import 'package:overnites/app/widgets/input.dart';
+import 'package:overnites/l10n/l10n.dart';
 
 class LoginState {
   factory LoginState() {
@@ -48,7 +49,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(
-                'Login',
+                context.l10n.logIn,
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -56,7 +57,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               Text(
-                'Udfyld dine login oplysninger',
+                context.l10n.fillOutYourInfo,
                 style: TextStyle(
                   fontSize: 14,
                   color: Theme.of(context).colorScheme.onSecondary,
@@ -115,6 +116,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         final navigator = Navigator.of(context);
                         final scaffoldMessengerState =
                             ScaffoldMessenger.of(context);
+                        final loggedInText = context.l10n.loggedIn;
 
                         setState(() {
                           errorMessage = '';
@@ -134,7 +136,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
                           showSnackBar(
                             scaffoldMessengerState,
-                            const Text('Logged In'),
+                            Text(loggedInText),
                           );
 
                           navigator.pop();
@@ -149,7 +151,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         minimumSize: const Size.fromHeight(40),
                       ),
                       child: Text(
-                        'Login',
+                        context.l10n.logIn,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -175,14 +177,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: 'Har du ikke en konto? Så klik ',
+                      text: context.l10n.dontHaveAnAccountThenClick,
                       style: TextStyle(
                         fontSize: 14,
                         color: Theme.of(context).colorScheme.onSecondary,
                       ),
                     ),
                     TextSpan(
-                      text: 'her',
+                      text: context.l10n.here,
                       style: TextStyle(
                         fontSize: 14,
                         color: Theme.of(context).colorScheme.onPrimary,
@@ -195,7 +197,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         },
                     ),
                     TextSpan(
-                      text: ', for at blive ført til registeringssiden.',
+                      text: context.l10n.toGetRedirectedToTheRegisterPage,
                       style: TextStyle(
                         fontSize: 14,
                         color: Theme.of(context).colorScheme.onSecondary,

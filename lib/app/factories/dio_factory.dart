@@ -11,7 +11,7 @@ class DioFactory {
   static Dio make(String bearerToken) {
     final dio = Dio(
       BaseOptions(
-        baseUrl: 'http://localhost/api',
+        baseUrl: 'https://overnites.binau.dev/api',
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 5),
         headers: {
