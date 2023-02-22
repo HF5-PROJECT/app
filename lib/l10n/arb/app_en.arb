@@ -1,7 +1,16 @@
 {
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+  "@@locale": "en",
+  "loggedOut": "Logged out",
+  "loggedIn": "Logged in",
+  "errorLoggingOutText": "Error logging out",
+  "logOut": "Log out",
+  "logIn": "Login",
+  "fillOutYourInfo": "Fill out your information",
+  "dontHaveAnAccountThenClick": "Don't have an account? Then click ",
+  "here": "here",
+  "goBack": "Go back",
+  "noResultsTryRefreshing": "No results, try refreshing",
+  "rooms": "Rooms",
+  "book": "Book",
+  "toGetRedirectedToTheRegisterPage": ", to get redirected to the register page."
 }

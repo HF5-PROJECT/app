@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:overnites/app/widgets/text.dart';
 import 'package:overnites/hotel/model.dart';
+import 'package:overnites/l10n/l10n.dart';
 
 class HotelCard extends StatefulWidget {
   const HotelCard({super.key, required this.hotel});
@@ -77,7 +78,7 @@ class _HotelCardState extends State<HotelCard> {
                     minimumSize: const Size.fromHeight(40),
                   ),
                   child: Text(
-                    'Værelser',
+                    context.l10n.rooms,
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.secondary,
                       fontWeight: FontWeight.w700,
@@ -97,9 +98,9 @@ class _HotelCardState extends State<HotelCard> {
                     backgroundColor: Theme.of(context).colorScheme.secondary,
                     minimumSize: const Size.fromHeight(40),
                   ),
-                  child: const Text(
-                    'Book',
-                    style: TextStyle(
+                  child: Text(
+                    context.l10n.book,
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),

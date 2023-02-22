@@ -5,6 +5,7 @@ import 'package:overnites/app/widgets/header.dart';
 import 'package:overnites/hotel/factory.dart';
 import 'package:overnites/hotel/model.dart';
 import 'package:overnites/hotel/widgets/hotel_card.dart';
+import 'package:overnites/l10n/l10n.dart';
 
 class HotelPage extends StatefulWidget {
   const HotelPage({super.key});
@@ -66,8 +67,8 @@ class _HotelPageState extends State<HotelPage> {
 
         if (widgets.isEmpty) {
           widgets.add(
-            const Text(
-              'Der er ingen hoteller, prøv at refresh...',
+            Text(
+              context.l10n.noResultsTryRefreshing,
             ),
           );
         }
