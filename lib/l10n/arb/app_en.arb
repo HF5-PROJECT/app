@@ -12,5 +12,9 @@
   "noResultsTryRefreshing": "No results, try refreshing",
   "rooms": "Rooms",
   "book": "Book",
-  "toGetRedirectedToTheRegisterPage": ", to get redirected to the register page."
+  "toGetRedirectedToTheRegisterPage": ", to get redirected to the register page.",
+  "price": "Price: ",
+  "kr": " kr.",
+  "size": "Size: ",
+  "supportedPeople": "People: "
 }
