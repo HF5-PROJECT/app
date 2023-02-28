@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:overnites/app/widgets/header.dart';
+import 'package:overnites/app/widgets/header_back.dart';
 import 'package:overnites/hotel/model.dart';
 import 'package:overnites/l10n/l10n.dart';
 import 'package:overnites/room/type/factory.dart';
@@ -49,7 +49,7 @@ class _HotelRoomTypesPageState extends State<HotelRoomTypesPage> {
             body: SafeArea(
               child: Column(
                 children: [
-                  const HeaderWidget(),
+                  const HeaderBackWidget(),
                   if (snapshot.hasError)
                     Expanded(
                       child: Center(
@@ -80,7 +80,7 @@ class _HotelRoomTypesPageState extends State<HotelRoomTypesPage> {
           body: SafeArea(
             child: Column(
               children: [
-                HeaderWidget(
+                HeaderBackWidget(
                   key: key,
                 ),
                 Expanded(

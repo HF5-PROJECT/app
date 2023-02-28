@@ -71,7 +71,7 @@ class _HotelCardState extends State<HotelCard> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       PageRouteBuilder<HotelRoomTypesPage>(
                         pageBuilder: (context, animation1, animation2) =>
