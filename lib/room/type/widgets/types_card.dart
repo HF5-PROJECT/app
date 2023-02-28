@@ -84,7 +84,7 @@ class _RoomTypeCardState extends State<RoomTypeCard> {
                 ),
                 TextWidget(
                   text: context.l10n.price +
-                      widget.roomType.price.toString() +
+                      widget.roomType.price.toStringAsFixed(2) +
                       context.l10n.kr,
                   maxLines: 1,
                 ),

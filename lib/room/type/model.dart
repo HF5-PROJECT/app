@@ -13,9 +13,7 @@ class RoomType {
       : id = json['id'] as int,
         name = json['name'] as String,
         size = json['size'] as String,
-        price = json['price'].runtimeType == int
-            ? (json['price'] as int).toDouble()
-            : json['price'] as double,
+        price = double.parse(json['price'].toString()),
         supportedPeople = json['supportedPeople'] as int,
         description = json['description'] as String,
         hotelId = json['hotelId'] as int;
