@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:overnites/app/widgets/text.dart';
 import 'package:overnites/hotel/model.dart';
 import 'package:overnites/l10n/l10n.dart';
+import 'package:overnites/room/type/view/hotel_room_types.dart';
 
 class HotelCard extends StatefulWidget {
   const HotelCard({super.key, required this.hotel});
@@ -69,7 +70,17 @@ class _HotelCardState extends State<HotelCard> {
                   size: const Size.fromHeight(16),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder<HotelRoomTypesPage>(
+                        pageBuilder: (context, animation1, animation2) =>
+                            HotelRoomTypesPage(hotel: widget.hotel),
+                        transitionDuration: Duration.zero,
+                        reverseTransitionDuration: Duration.zero,
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),

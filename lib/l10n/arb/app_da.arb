@@ -12,5 +12,9 @@
   "noResultsTryRefreshing": "Ingen resultater, prøv at opdatere siden",
   "rooms": "Værelser",
   "book": "Book",
-  "toGetRedirectedToTheRegisterPage": ", for at blive ført til registeringssiden."
+  "toGetRedirectedToTheRegisterPage": ", for at blive ført til registeringssiden.",
+  "price": "Pris: ",
+  "kr": " kr.",
+  "size": "Størrelse: ",
+  "supportedPeople": "Personer: "
 }

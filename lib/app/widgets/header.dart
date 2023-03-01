@@ -24,7 +24,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
             iconSize: 36,
             splashRadius: 36,
             onPressed: () => {
-              if (ModalRoute.of(context)!.settings.name != '/hotels')
+              if (Navigator.canPop(context))
+                {Navigator.pop(context)}
+              else if (ModalRoute.of(context)!.settings.name != '/hotels')
                 {
                   Navigator.pushReplacement(
                     context,
@@ -38,7 +40,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                 }
             },
             icon: SvgPicture.asset(
-              'assets/small-logo.svg',
+              (Navigator.canPop(context))
+                  ? 'assets/back-icon.svg'
+                  : 'assets/small-logo.svg',
               height: 128,
               width: 128,
               fit: BoxFit.fill,
