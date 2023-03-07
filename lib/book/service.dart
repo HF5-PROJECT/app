@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:overnites/Book/model.dart';
+import 'package:overnites/book/model.dart';
 
 class BookService {
   BookService(this._dio);

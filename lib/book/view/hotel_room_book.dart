@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:overnites/app/factories/auth_service_factory.dart';
 import 'package:overnites/app/factories/book_service_factory.dart';
