@@ -1,47 +1,43 @@
 import 'package:flutter/material.dart';
 
-class TextInputWidget extends StatefulWidget {
-  const TextInputWidget({
+class DropdownInputWidget extends StatefulWidget {
+  const DropdownInputWidget({
     super.key,
-    this.obscureText = false,
     this.initialValue = '',
     required this.onChanged,
-    required this.validator,
+    required this.items,
     this.hintText = '',
     this.keyboardType = TextInputType.text,
     this.autoFocus = false,
   });
 
-  final bool obscureText;
   final bool autoFocus;
   final String initialValue;
-  final void Function(String) onChanged;
+  final void Function(dynamic) onChanged;
   final String hintText;
   final TextInputType keyboardType;
-  final String? Function(String?) validator;
+  final List<DropdownMenuItem<int>> items;
 
   @override
-  State<StatefulWidget> createState() => _TextInputWidgetState();
+  State<StatefulWidget> createState() => _DropdownInputWidgetState();
 }
 
-class _TextInputWidgetState extends State<TextInputWidget> {
+class _DropdownInputWidgetState extends State<DropdownInputWidget> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return DropdownButtonFormField(
       autofocus: widget.autoFocus,
-      obscureText: widget.obscureText,
-      cursorColor: Theme.of(context).colorScheme.primary,
       style: TextStyle(
         fontSize: 16,
         color: Theme.of(context).colorScheme.secondary,
       ),
-      initialValue: widget.initialValue,
       onChanged: widget.onChanged,
-      keyboardType: widget.keyboardType,
-      validator: widget.validator,
+      items: widget.items,
+      iconEnabledColor: Theme.of(context).colorScheme.secondary,
+      dropdownColor: Theme.of(context).colorScheme.onPrimary,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: 15,
+          horizontal: 6,
           vertical: 12,
         ),
         hintStyle: TextStyle(
@@ -51,6 +47,8 @@ class _TextInputWidgetState extends State<TextInputWidget> {
         filled: true,
         isDense: true,
         fillColor: Theme.of(context).colorScheme.onPrimary,
+        prefixIconColor: Theme.of(context).colorScheme.secondary,
+        suffixIconColor: Theme.of(context).colorScheme.secondary,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(12),

@@ -16,5 +16,9 @@
   "price": "Pris: ",
   "kr": " kr.",
   "size": "Størrelse: ",
-  "supportedPeople": "Personer: "
+  "supportedPeople": "Personer: ",
+  "booking": "Booking",
+  "chooseCriterias": "Vælg kriterier",
+  "addRoom": "Tilføj et værelse",
+  "removeRoom": "Fjern værelse"
 }

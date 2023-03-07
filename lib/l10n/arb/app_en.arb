@@ -16,5 +16,9 @@
   "price": "Price: ",
   "kr": " kr.",
   "size": "Size: ",
-  "supportedPeople": "People: "
+  "supportedPeople": "People: ",
+  "booking": "Booking",
+  "chooseCriterias": "Choose Criterias" ,
+  "addRoom": "Add room",
+  "removeRoom": "Remove room"
 }
