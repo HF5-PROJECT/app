@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:overnites/app/util/modal.dart';
 import 'package:overnites/app/widgets/text.dart';
+import 'package:overnites/booking/view/hotel_room_booking.dart';
 import 'package:overnites/hotel/model.dart';
 import 'package:overnites/l10n/l10n.dart';
 import 'package:overnites/room/type/view/hotel_room_types.dart';
@@ -101,7 +103,14 @@ class _HotelCardState extends State<HotelCard> {
                   size: const Size.fromHeight(16),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModal(
+                      context,
+                      (context) {
+                        return HotelBookPage(hotel: widget.hotel);
+                      },
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
