@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:overnites/app/util/modal.dart';
 import 'package:overnites/app/widgets/text.dart';
-import 'package:overnites/book/view/hotel_room_book.dart';
+import 'package:overnites/booking/view/hotel_room_booking.dart';
 import 'package:overnites/hotel/model.dart';
 import 'package:overnites/l10n/l10n.dart';
 import 'package:overnites/room/type/view/hotel_room_types.dart';
