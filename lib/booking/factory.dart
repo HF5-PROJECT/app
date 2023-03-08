@@ -1,12 +1,12 @@
 import 'package:overnites/app/factories/bearer_token_factory.dart';
 import 'package:overnites/app/factories/dio_factory.dart';
-import 'package:overnites/app/services/book.dart';
+import 'package:overnites/booking/service.dart';
 
-class BookServiceFactory {
-  static Future<BookService> make() async {
+class BookingServiceFactory {
+  static Future<BookingService> make() async {
     final bearerTokenService = await BearerTokenFactory.make();
 
-    return BookService(
+    return BookingService(
       DioFactory.make(bearerTokenService.getAccessToken()),
     );
   }

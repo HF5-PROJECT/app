@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:overnites/book/view/hotel_room_book.dart';
+import 'package:overnites/booking/view/hotel_room_booking.dart';
 
-class BookService {
-  BookService(this._dio);
+class BookingService {
+  BookingService(this._dio);
 
   final Dio _dio;
 

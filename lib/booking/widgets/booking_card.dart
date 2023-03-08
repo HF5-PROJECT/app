@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:overnites/app/widgets/text.dart';
-import 'package:overnites/book/model.dart';
 
 class BookCard extends StatefulWidget {
-  const BookCard({super.key, required this.book});
-
-  final Book book;
+  const BookCard({super.key});
 
   @override
   State<BookCard> createState() => _BookCardState();

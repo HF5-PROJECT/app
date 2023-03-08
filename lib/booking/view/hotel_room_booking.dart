@@ -1,11 +1,9 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:overnites/app/factories/auth_service_factory.dart';
-import 'package:overnites/app/factories/book_service_factory.dart';
 import 'package:overnites/app/util/modal.dart';
 import 'package:overnites/auth/widgets/login.dart';
-import 'package:overnites/book/widgets/room_book_criterias.dart';
+import 'package:overnites/booking/factory.dart';
+import 'package:overnites/booking/widgets/room_booking_criterias.dart';
 import 'package:overnites/hotel/model.dart';
 import 'package:overnites/l10n/l10n.dart';
 import 'package:overnites/room/type/factory.dart';
@@ -24,18 +22,18 @@ class HotelBookPage extends StatefulWidget {
 class BookState {
   BookState() {
     _instance.roomTypeIds = [];
-    _instance.start = DateTime.now().subtract(const Duration(days: 1));
-    _instance.end = DateTime.now().subtract(const Duration(days: 1));
+    _instance.start = null;
+    _instance.end = null;
   }
   BookState._internal();
 
   static final BookState _instance = BookState._internal();
 
   List<BookRoomType> roomTypeIds = [];
-  DateTime start = DateTime.now().subtract(const Duration(days: 1));
-  DateTime end = DateTime.now().subtract(const Duration(days: 1));
+  DateTime? start;
+  DateTime? end;
 
-  void removeRoomTypeIfSet(ValueKey<dynamic> key) {
+  void removeRoomTypeIfSet(ValueKey<String> key) {
     if (roomTypeIds.any(
       (e) => e.roomTypeKey == key,
     )) {
@@ -47,12 +45,12 @@ class BookState {
 }
 
 class BookRoomType {
-  BookRoomType(ValueKey<dynamic> key, int id) {
+  BookRoomType(ValueKey<String> key, int id) {
     roomTypeKey = key;
     roomTypeId = id;
   }
 
-  late ValueKey<dynamic> roomTypeKey;
+  late ValueKey<String> roomTypeKey;
   late int roomTypeId;
 }
 
@@ -67,7 +65,6 @@ class _HotelBookPageState extends State<HotelBookPage> {
   }
 
   final _bookState = BookState();
-  final GlobalKey key = GlobalKey();
   final _formKey = GlobalKey<FormState>();
   String errorMessage = '';
 
@@ -114,7 +111,7 @@ class _HotelBookPageState extends State<HotelBookPage> {
               onDelete: () {},
               onChange: (value) => {
                 setState(
-                  () async {
+                  () {
                     _bookState.removeRoomTypeIfSet(roomKey);
 
                     _bookState.roomTypeIds.add(
@@ -166,8 +163,8 @@ class _HotelBookPageState extends State<HotelBookPage> {
 
                         setState(() {
                           _bookState
-                            ..start = ranges.startDate!
-                            ..end = ranges.endDate!;
+                            ..start = ranges.startDate
+                            ..end = ranges.endDate;
                         });
                       },
                       monthCellStyle: DateRangePickerMonthCellStyle(
@@ -257,14 +254,15 @@ class _HotelBookPageState extends State<HotelBookPage> {
                           ElevatedButton(
                             onPressed: () async {
                               final navigator = Navigator.of(context);
+                              final ctx = context;
                               setState(() {
                                 errorMessage = '';
                               });
 
                               if (await (await AuthServiceFactory.make())
                                   .isAuthenticated()) {
-                                if (DateTime.now().isAfter(_bookState.start) ||
-                                    DateTime.now().isAfter(_bookState.end)) {
+                                if (_bookState.start == null ||
+                                    _bookState.end == null) {
                                   setState(() {
                                     errorMessage = 'You need to pick a date';
                                   });
@@ -278,18 +276,19 @@ class _HotelBookPageState extends State<HotelBookPage> {
                                   return;
                                 }
 
-                                if (await (await BookServiceFactory.make())
+                                if (await (await BookingServiceFactory.make())
                                     .book(
-                                  _bookState.start,
-                                  _bookState.end,
+                                  _bookState.start!,
+                                  _bookState.end!,
                                   _bookState.roomTypeIds,
                                 )) {
                                   navigator.pop();
                                 }
                               } else {
+                                // ignore: use_build_context_synchronously
                                 showModal(
-                                  context,
-                                  (context) {
+                                  ctx,
+                                  (ctx) {
                                     return const LoginWidget();
                                   },
                                 );
